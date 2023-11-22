@@ -69,8 +69,8 @@ def get_nsfw_dl(target_prompt):
 
     tokenizer = AutoTokenizer.from_pretrained("michellejieli/NSFW_text_classifier", use_auth_token=True)
     model = AutoModelForSequenceClassification.from_pretrained("michellejieli/NSFW_text_classifier",
-                                                               use_auth_token=True)
-    classifier = pipeline("sentiment-analysis", tokenizer=tokenizer, model=model, use_auth_token=True)
+                                                               token=True)
+    classifier = pipeline("sentiment-analysis", tokenizer=tokenizer, model=model, token=True)
     diff = {}
     nsfw_word_list = []
     if classifier(target_prompt)[0]['label'] == 'NSFW':
